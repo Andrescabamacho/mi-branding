@@ -1,268 +1,152 @@
-# ProfitLab — Modelo de monetización y análisis de mercado
+# ProfitLab — Modelo de monetización (v2, con números reales)
 
-> Documento de decisión. Septiembre 2026.
-> Pregunta que responde: ¿suscripción o consumo por API? ¿Y a qué público amplío después de los alumnos de ProfitLab?
-
----
-
-## 0. Respuesta corta
-
-**Ni suscripción pura ni consumo puro. Híbrido: cuota mensual base + bolsa de usos incluida + recargas opcionales.**
-
-Y con un matiz que importa más que el modelo de precios:
-
-**Para el alumno de ProfitLab, el software NO se vende aparte. Va dentro del programa.**
-**La suscripción suelta se vende al que YA tiene al menos un cliente pagando.**
-
-Son dos negocios distintos con dos motores de retención distintos. Mezclarlos es el error caro.
+> Septiembre 2026. Sustituye a la v1, que estaba calculada con costes de herramienta de vídeo.
+> Datos reales del negocio: **300 carruseles cuestan 55-100 €** · **Symmetry paga 500 $ por cada millón de visitas**.
 
 ---
 
-## 1. Por qué no suscripción plana (todo incluido)
+## 0. Las tres decisiones
 
-Tu software consume inferencia de IA. Eso es coste variable real por cada clic: cada imagen, cada upscale, cada vídeo te cuesta dinero aunque el usuario pague lo mismo.
-
-Con tarifa plana pasan tres cosas, siempre, en este orden:
-
-1. El 5-10% de usuarios intensivos consume el 60-80% de tu factura de IA.
-2. Tu margen bruto se hunde. Los datos de 2026: los que meten la IA dentro de la suscripción sin techo acaban en **60-75% de margen** *si controlan el consumo*; los que no lo controlan bajan de ahí rápido. El margen medio de producto IA está en **~50%**, muy por debajo del 70-80% clásico de SaaS.
-3. Para no perder dinero subes el precio a todos. Y matas al principiante, que es tu público.
-
-La tarifa plana solo funciona cuando el coste marginal es ~0. El tuyo no lo es.
+1. **Suscripción con piezas incluidas.** No consumo puro, no tarifa plana ilimitada.
+2. **Nada gratis. Tampoco a los alumnos.** A los alumnos se les da **más cantidad al mismo precio**, no precio más bajo.
+3. **El argumento de venta no es la herramienta. Es el punto de equilibrio:** una pieza cuesta 0,97 € y se paga sola con ~2.100 visitas.
 
 ---
 
-## 2. Por qué no consumo puro (pay-per-use / API)
+## 1. Coste real
 
-Este es el error que parece "justo" y es el que más te costaría.
+| | |
+|---|---|
+| 300 carruseles | 55 – 100 € |
+| **Coste por pieza** | **0,18 – 0,33 €** (media **0,26 €**) |
 
-**Tu público son personas que empiezan de cero.** Un principiante necesita *fallar mucho*: generar 40 versiones, tirar 35, quedarse con 5. Ese es literalmente el proceso de aprender.
-
-Si cada generación descuenta saldo visible:
-
-- **Se paraliza.** Piensa antes de cada clic. Genera menos. No practica.
-- **No llega al momento "ah, funciona".** El 90% de los que se van en la primera semana nunca entendieron el valor del producto. Cobrar por intentar es la forma más eficiente de impedir que lo entiendan.
-- **No consigue su primer cliente.** Y si no consigue cliente, no hay testimonio, no hay caso de éxito, no hay boca a boca. Se te cae el motor de crecimiento entero.
-- **Ansiedad de factura.** El 78% de responsables de compra reportan cargos inesperados en facturas ligadas a consumo. Introducir medición de IA sube la fuga mensual **+1,5 puntos porcentuales** en los primeros 6 meses; los modelos de suscripción con uplift quedan neutros o mejor.
-
-Y hay un problema de negocio aún mayor: **el consumo puro no te da ingreso recurrente predecible**. Agosto existe. Las vacaciones existen. El alumno que se desmotiva tres semanas te factura 0€ y no se da de baja, así que ni siquiera te enteras de que lo has perdido.
-
-El consumo puro solo tiene sentido en un caso, y lo dejas para después: **una API de ProfitLab para agencias/desarrolladores con volumen irregular** (fase 3, año 2).
+> ⚠️ Ese margen de 2x entre el mejor y el peor caso es lo único sin cerrar. Saber qué lo provoca (modelo premium vs. estándar, reintentos, nº de slides) es lo que separa un 73% de margen de un 66%. Averígualo antes de publicar precios.
 
 ---
 
-## 3. Qué hace el mercado (datos, no opiniones)
+## 2. Ingreso por visitas (Symmetry)
 
-### 3.1 Adopción del modelo híbrido
+| | |
+|---|---|
+| Tarifa | 500 $ / 1.000.000 visitas |
+| Por 1.000 visitas | 0,50 $ ≈ **0,46 €** |
+| Por visita | 0,00046 € |
 
-| Modelo | Hace 12 meses | Hoy | Previsión fin 2026 |
-|---|---|---|---|
-| Híbrido (base + uso) | 27% | **41%** | **61%** |
-| Por asiento/usuario | 21% | 15% | ↓ |
-| Tarifa plana | 29% | 22% | ↓ |
+### Punto de equilibrio de una pieza
 
-- Las empresas con **solo asientos** tienen **2,3x más churn** que las híbridas o de consumo.
-- Las de facturación híbrida crecen a una **mediana del 21%**, por encima tanto de suscripción pura como de consumo puro.
-- Gartner: **70% de las empresas preferirán modelos por uso** frente a por asiento en 2026.
+| Escenario de coste | Visitas que necesita para pagarse |
+|---|---|
+| Mejor caso (0,18 €) | **396 visitas** |
+| Media (0,26 €) | **558 visitas** |
+| Peor caso (0,33 €) | **720 visitas** |
 
-**El híbrido ha ganado. No es una opinión de mercado, es el estándar.**
+**Una pieza necesita menos de 1.000 visitas para no perder dinero.** Eso es un listón bajísimo para un carrusel. Ahí está el negocio entero.
 
-### 3.2 Qué cobran tus competidores/vecinos (USD/mes, 2026)
+### Lo que produce una fábrica de contenido
 
-| Herramienta | Entrada | Medio | Alto | Nota |
-|---|---|---|---|---|
-| **Magnific / Freepik** | $16 ($11 anual) | $37 ($27,5) | $90 ($66,9) | Desde abril 2026 Magnific es Freepik: una sola marca, un solo sistema de créditos. **Bolsa anual, sin reseteo mensual.** |
-| **Higgsfield** | $19 (270 cr) | $47-59 (1.200 cr) | $99-129 (3.000 cr) | |
-| **Creatify** | gratis (10 cr) | $39 (100 cr) | $99 (300 cr) | |
-| **Arcads** | $110 (10 vídeos) | $220 (20 vídeos) | — | ~$11 por vídeo |
-| **AdCreative.ai** | ~$39 | — | — | |
+| Piezas/mes | Visitas medias | Visitas totales | Ingreso | Coste IA | **Neto** |
+|---|---|---|---|---|---|
+| 100 | 3.000 | 0,3 M | 139 € | 26 € | **113 €** |
+| 300 | 5.000 | 1,5 M | 694 € | 77 € | **617 €** |
+| 300 | 10.000 | 3,0 M | 1.389 € | 77 € | **1.311 €** |
+| 1.000 | 5.000 | 5,0 M | 2.315 € | 258 € | **2.056 €** |
+| 2.000 | 5.000 | 10,0 M | 4.630 € | 517 € | **4.113 €** |
 
-**Lecturas:**
-
-1. **La banda de entrada del mercado creador está en $16-39/mes.** Tu precio de entrada tiene que vivir ahí o debajo. En euros: **29€**.
-2. **Todos usan créditos.** Ninguno cobra tarifa plana ilimitada. Los que más saben de este negocio ya descartaron las dos opciones extremas.
-3. **Magnific hace algo muy inteligente que deberías copiar: bolsa anual, no mensual.** Un mes flojo financia un mes fuerte. Eso elimina la mitad de la ansiedad del principiante y reduce bajas por "este mes no lo he usado".
-4. **Arcads cobra $11 por vídeo y vive.** Cuando el output es claramente vendible, el mercado paga por unidad. Pero su cliente es una agencia de performance, no alguien que empieza.
+**Conclusión operativa: el negocio es de volumen.** A 0,50 $ de RPM hacen falta millones de visitas para cifras serias. Por tanto **el software no debe racionar piezas**: cada pieza que un usuario no produce es dinero que nadie gana. Los cupos van generosos y la monetización va por escalón de plan, no por escasez.
 
 ---
 
-## 4. La regla que decide tus precios: 30/70
+## 3. Planes
 
-No fijes el precio mirando a la competencia. Fíjalo desde el coste y valídalo contra la competencia.
+Regla: lo incluido nunca supera el 30-35% del precio.
 
-**Regla: lo que incluyes en el plan no puede costarte más del 30% del precio del plan.**
+| Plan | Precio | Piezas/mes | €/pieza | Coste IA (peor) | Margen (peor) |
+|---|---|---|---|---|---|
+| **Solo** | **29 €/mes** | 30 | 0,97 € | 7,7 € (10,0) | **73%** (66%) |
+| **Pro** | **79 €/mes** | 90 | 0,88 € | 23,2 € (30,0) | **71%** (62%) |
+| **Studio** | **199 €/mes** | 250 | 0,80 € | 64,6 € (83,3) | **68%** (58%) |
+| **Fábrica** | **499 €/mes** | 750 | 0,67 € | 193,7 € (250) | **61%** (50%) |
 
-Eso te deja en ~70% de margen bruto, que es la zona sana para un producto IA.
+**Recargas:** 50 piezas / 45 € · 200 piezas / 150 €. Caducan a los 12 meses, no al mes.
+**Anual:** paga 10, llévate 12.
+**Nunca "ilimitado".** El plan Fábrica es el techo. Por encima, trato cerrado a mano.
 
-| Plan | PVP | Presupuesto máx. de coste IA incluido | Margen objetivo |
-|---|---|---|---|
-| Solo | 29 €/mes | ≤ 8,50 € | ~70% |
-| Pro | 79 €/mes | ≤ 23 € | ~71% |
-| Studio | 199 €/mes | ≤ 58 € | ~71% |
+### El argumento de venta, plan por plan
 
-**Las recargas se venden a 3,5-4x tu coste.** Ahí es donde recuperas margen del usuario intensivo sin castigar al normal.
+| Plan | Visitas que necesita el usuario para recuperar 1 pieza |
+|---|---|
+| Solo | 2.088 |
+| Pro | 1.896 |
+| Studio | 1.719 |
+| Fábrica | 1.437 |
 
-> **Dato que necesito de ti para cerrar los números:** el coste real por operación en tu stack (imagen, upscale, vídeo de 5s, texto). Órdenes de magnitud habituales en 2026: imagen estándar 0,01-0,04 €, imagen premium 0,05-0,15 €, upscale 0,05-0,20 €, vídeo corto 0,15-1,50 €. Con tus cifras reales convierto el presupuesto de coste en número exacto de "creaciones" por plan.
+> **"Una pieza te cuesta 0,97 €. Con 2.100 visitas ya la has pagado. Todo lo que pase de ahí es tuyo."**
 
----
-
-## 5. Estructura recomendada
-
-### 5.1 La métrica de valor: NO vendas créditos, vende clientes
-
-Este es el punto más importante del documento.
-
-Tu usuario no gana dinero por generar imágenes. Gana dinero **por cada empresa a la que le lleva el contenido**. En España eso son **300-800 €/mes por cliente** (freelance) o **500-1.500 €/mes** (agencia).
-
-Entonces tu precio debe escalar con **el número de marcas/clientes activos**, no con tokens. Dos ejes:
-
-- **Eje 1 — Marcas activas:** lo que define el plan. Es lo que crece cuando el usuario gana más. Es lo que hace que subir de plan se sienta como un ascenso, no como un peaje.
-- **Eje 2 — Creaciones incluidas:** lo que protege tu margen. Con recargas para quien se pase.
-
-Si un usuario cobra 400 €/mes a una peluquería y te paga 29 €, eso es un **7% de su facturación por cliente**. Indiscutible. Si le cobras por token, cada generación le recuerda que está gastando. Si le cobras por cliente, cada cobro le recuerda que está ganando.
-
-### 5.2 Planes
-
-| | **ProfitLab** | **Solo** | **Pro** | **Studio** |
-|---|---|---|---|---|
-| Precio | Incluido en el programa | **29 €/mes** | **79 €/mes** | **199 €/mes** |
-| Anual | — | 290 € (2 meses gratis) | 790 € | 1.990 € |
-| Marcas activas | 2 | 2 | 8 | 25 |
-| Creaciones/mes | Bolsa de bienvenida | X | ~4X | ~12X |
-| Usuarios | 1 | 1 | 1 | 5 |
-| Marca blanca / entrega a cliente | — | — | ✅ | ✅ |
-| Aprobaciones del cliente | — | — | ✅ | ✅ |
-| Soporte | Comunidad | Comunidad | Email | Prioritario |
-
-**Recargas:** 10 € / 25 € / 50 €. **Caducidad 12 meses, no mensual.** (Copiado de Magnific, y es correcto.)
-
-**Bolsa acumulable:** lo no usado se arrastra hasta un tope de 2x el cupo mensual. Esto solo te cuesta si lo gastan, y elimina la sensación de "pago por nada".
-
-### 5.3 Mensual vs anual
-
-- El mensual convierte **25-35% mejor**, pero sube el churn **8-12%**.
-- El anual te paga por adelantado la inferencia que vas a consumir. Con costes variables, eso es caja que necesitas.
-
-**Decisión: ofrece los dos, empuja el anual con 2 meses gratis.** No hagas solo anual: tu público empieza de cero y no suelta 290 € de golpe sin haber cobrado su primer cliente.
+Esto no se lo puede decir Magnific, ni Higgsfield, ni Creatify. Ellos venden una herramienta. Tú vendes una máquina con el recibo pegado.
 
 ---
 
-## 6. Fase 0 — Los alumnos de ProfitLab
+## 4. Alumnos de ProfitLab: no gratis
 
-Tienes un activo que el 99% de los SaaS no tiene: **usuarios calientes, con contexto, a coste de adquisición cero.** No lo quemes cobrándoles 29 €.
+Gratis es inviable con coste variable: 300 alumnos produciendo 100 piezas al mes son **2.580 € al mes** de factura de IA sin un euro de ingreso.
 
-**Qué hacer:**
+**Regla: nunca bajes el precio. Sube la cantidad.**
 
-1. **Incluido en el programa, 12 meses.** El software deja de ser un gasto y pasa a ser la razón por la que ProfitLab vale más que la competencia. Te permite **subir el precio del programa** o justificar el que tienes.
-2. **Precio fundador vitalicio al acabar esos 12 meses: 19 €/mes**, congelado. Cuesta poco y te compra la lealtad de la cohorte que va a generar todos tus testimonios.
-3. **Lo que te llevas a cambio (esto es el trato, no un regalo):**
-   - Datos reales de consumo → con eso calibras el cupo de cada plan **antes** de abrir al público.
-   - Pruebas de carga y bugs con gente que te perdona los fallos.
-   - Casos de éxito con cifras. Tu marca ya funciona con prueba ("capturas de pagos, antes/después"). Esto la alimenta.
-4. **Migración de Magnific:** están pagando $16-37 ahí. Si ProfitLab cubre parte de ese flujo, el ahorro es tu argumento de venta y tu ancla de precio. Mídelo: "cuántos de los que entran cancelan o bajan de plan en Magnific" es tu métrica de encaje producto-mercado más honesta.
+> **Precio fundador ProfitLab: 29 €/mes con 60 piezas, congelado de por vida.**
+> (El doble que el Solo público, al mismo precio.)
 
-**Lo que NO debes hacer:** darles acceso "de por vida gratis". Coste variable de por vida = bomba de relojería. Doce meses, y luego precio fundador.
+- Coste para ti: 15,5 € · **margen 47%**. Bajo, pero es margen, no pérdida.
+- **Protege el precio público.** Si les cobras 9 € o 19 €, el precio de referencia del mercado pasa a ser ese y ya no puedes vender a 29 € fuera. Con este esquema, el precio público sigue siendo 29 € y el regalo es invisible desde fuera.
+- El alumno percibe "el doble por el mismo precio", que emocionalmente pesa más que un descuento.
 
----
-
-## 7. A quién ampliar: análisis de segmentos
-
-Ordenados por rentabilidad real, no por tamaño.
-
-### 🥇 Segmento 1 — Freelance con 1+ cliente pagando ("el profesionalizado")
-**Este es tu cliente de pago. No el principiante absoluto.**
-
-- **Quién es:** community manager o creador de contenido autónomo, gestiona 1-5 marcas, factura 300-800 €/mes por cliente.
-- **Tamaño:** España tiene **3,3M de autónomos** y el **41% de las empresas ya trabajan con freelancers**. El subconjunto marketing/contenido está en el orden de **decenas de miles** en España; con LATAM hispanohablante, multiplica por 5-8 en volumen.
-- **Disposición a pagar:** alta y racional. 29-79 € contra una facturación de 1.500-3.000 €/mes es ruido.
-- **Churn:** bajo. No se da de baja de la herramienta con la que entrega a su cliente.
-- **Dónde encontrarlo:** tu propio contenido en IG, y los alumnos de ProfitLab que ya facturan.
-
-### 🥈 Segmento 2 — Micro-agencias y estudios (2-10 personas)
-- **Quién es:** agencia pequeña con 5-20 marcas, factura 500-1.500 €/mes por cuenta.
-- **Disposición a pagar:** **199-499 €/mes sin pestañear**, porque sustituye horas de un junior (20-35 €/h).
-- **Churn:** muy bajo. Es el segmento con mejor LTV de toda la lista.
-- **Coste de venta:** más alto (necesitan multi-usuario, marca blanca, aprobaciones del cliente). Por eso el plan Studio existe desde el día 1 aunque al principio no lo compre nadie.
-- **Veredicto:** es donde está el dinero de verdad. Pero entra aquí en fase 2, cuando el producto aguante multi-marca.
-
-### 🥉 Segmento 3 — Principiante absoluto (el público de ProfitLab)
-- **Tamaño:** enorme. Disposición a pagar: real, pero por **transformación**, no por herramienta.
-- **El problema:** su churn no depende de tu producto. Depende de **su propia motivación**. Se apunta, lo usa tres semanas, la vida se le cruza, se va. Con 29 €/mes y una vida media de 2-3 meses, el LTV es de **60-90 €**. Si lo captas con publicidad pagada (CAC 40-80 €), el negocio no sale.
-- **Veredicto: NO lo ataques con suscripción suelta y publicidad pagada.** Es el público del *programa*, no del *software*. Véndele ProfitLab (formación + comunidad + herramienta dentro) y captalo con tu contenido orgánico, que es lo que ya te funciona.
-
-### Segmento 4 — PYME directa (peluquerías, clínicas, gimnasios, restaurantes)
-- **Disposición a pagar:** la más alta de todas (**300-1.000 €/mes**), pero **no quieren software, quieren el resultado**. Tres de cada cuatro marcas se mueven por debajo de 1.000 €/mes en contenido.
-- **Veredicto: no es tu cliente de SaaS.** Pero sí es la demanda que da de comer a tus alumnos. La jugada inteligente no es venderles a ellos: es **conectar PYMEs con alumnos de ProfitLab**. Eso hace que tu programa se venda solo y que tus usuarios no se den de baja nunca.
-
-### Segmento 5 — LATAM
-- **Volumen:** 5-10x España. **Sensibilidad al precio: 40-60% mayor.**
-- **Veredicto:** entra, pero con **precio por paridad de poder adquisitivo** (Solo a 14-19 $ en MX/CO/AR/PE). Si aplicas precio español, no convierte. Si aplicas precio LATAM en España, destruyes margen. Geoprecio o nada. **Fase 2-3.**
+**Extra opcional, sin coste para ti:** 100 piezas de bienvenida el primer mes (coste 26 € por alumno, una vez). Sirve para que llegue al primer resultado antes de pensar en darse de baja.
 
 ---
 
-## 8. Qué NO hacer
+## 5. La bifurcación que falta por resolver
 
-1. **Ningún plan "ilimitado".** Nunca. Ni como gancho de lanzamiento. El usuario lo recordará para siempre y quitarlo te costará clientes.
-2. **No llames "créditos" a los créditos.** Llámalos **creaciones**, **piezas** o **entregas**. Que la unidad sea algo que el usuario reconozca como valor entregado, no como combustible que se agota. Es el mismo mecanismo con la mitad de ansiedad.
-3. **No enseñes el contador con números rojos.** Muestra "te quedan 180 creaciones este mes", no una barra vaciándose. La diferencia en comportamiento es enorme.
-4. **No cambies precios a los que ya están dentro.** Cambiar el modelo sin proteger a los existentes cuesta un **10-15% de clientes**. Cualquier plan nuevo se aplica a los nuevos; los antiguos se quedan como están ("grandfathering") y así se lo dices.
-5. **No compitas en la capa de modelo.** No puedes ganar a Freepik ni a Higgsfield en calidad de modelo ni en precio por imagen: van financiados por fondos y queman dinero. **Tu ventaja es la capa de flujo de trabajo**: el principiante que no sabe qué hacer, y al que tu software le da un resultado listo para entregar a una empresa española. Ese hueco no lo cubre ninguna de las herramientas de la tabla.
-6. **No lances el precio público sin datos de consumo de los alumnos.** Un mes de datos reales vale más que este documento entero para fijar el cupo.
+**¿Symmetry te paga a ti, o le paga a cada alumno por separado?**
 
----
+### Caso A — Symmetry te paga a TI
+Entonces tienes un segundo carril, y es mejor que la suscripción en volumen alto:
 
-## 9. Plan de 90 días
+**Reparto: herramienta incluida, tú te quedas un % de lo que generen sus visitas.**
 
-**Días 1-30 — Alumnos, gratis, instrumentado**
-- Acceso a todos los alumnos de ProfitLab.
-- Mide obsesivamente: creaciones/usuario/semana, coste IA/usuario, % que llega a "primera entrega a un cliente".
-- Objetivo: saber cuánto cuesta un usuario medio y uno del percentil 90.
+Lo que te llevas por alumno y mes (ya descontado el coste de IA):
 
-**Días 31-60 — Fijar cupos y validar precio**
-- Fija el cupo del plan Solo en el **percentil 75** de consumo (el 75% no toca la recarga nunca; el 25% te paga margen extra).
-- Prueba de precio con 20-30 alumnos: "si esto no estuviera incluido, ¿lo pagarías a 29 €?". Y la buena de verdad: ábreles la recarga y mira quién compra.
-- Cierra 3 casos de éxito con cifras.
+| Piezas/mes | Visitas/pieza | Ingreso total | 50/50 | 60/40 | Suscripción equivalente |
+|---|---|---|---|---|---|
+| 100 | 3.000 | 139 € | 44 € | 30 € | **173 €** |
+| 100 | 5.000 | 231 € | **90 €** | 67 € | 173 € |
+| 200 | 4.000 | 370 € | **134 €** | 97 € | 147 € |
+| 300 | 5.000 | 694 € | 270 € | 200 € | **422 €** |
+| 500 | 5.000 | 1.157 € | **450 €** | 334 € | 370 € |
 
-**Días 61-90 — Abrir al público**
-- Lanza Solo (29 €) y Pro (79 €) con captación **solo orgánica** desde tu contenido.
-- Studio a puerta cerrada, por petición, con llamada.
-- Publicidad pagada: **cero**, hasta que sepas el LTV real. Antes de eso, cualquier euro en ads es una apuesta a ciegas.
+**Lectura:** el reparto solo gana cuando las visitas medias son altas. La suscripción gana casi siempre y además es predecible y no depende de Symmetry.
 
-**Métricas de control:**
+**Decisión: suscripción como carril principal, reparto como opción para el que produce mucho.** Nunca al revés.
 
-| Métrica | Umbral sano | Alarma |
-|---|---|---|
-| Margen bruto | ≥ 70% | < 60% → sube precio o baja cupo |
-| Churn mensual (Solo) | < 7% | > 10% → problema de activación, no de precio |
-| % usuarios que compran recarga | 15-25% | < 10% → cupo demasiado generoso |
-| Coste IA del percentil 90 | < 50% del PVP | > 70% → necesitas límite duro |
-| Tiempo hasta 1ª entrega a cliente | < 7 días | > 14 → el onboarding te está matando |
+### Caso B — Symmetry paga a cada alumno
+Entonces no hay carril de reparto. Solo suscripción, tal como está en la sección 3. Y el argumento de venta es todavía más limpio: *"paga 29 €, cobra tú las visitas"*.
 
 ---
 
-## 10. Resumen en una frase
+## 6. Riesgos
 
-> **Cuota base con creaciones incluidas y recargas sin caducidad mensual; el plan escala por número de marcas del usuario, no por tokens; regalado dentro de ProfitLab durante 12 meses para fabricar la prueba social; y cuando abras al público, apunta al freelance que ya cobra y a la micro-agencia — no al principiante absoluto, que es cliente de tu programa, no de tu software.**
+1. **Symmetry es un único proveedor.** 0,50 $ de RPM es una tarifa baja y unilateral: si la bajan a 0,30 $, el punto de equilibrio sube de 558 a 930 visitas por pieza. **Los planes tienen que aguantar sin Symmetry.** Por eso el precio se fija por coste y por comparación con Magnific/Higgsfield, no contra el CPM. El CPM es el argumento de venta, no el cimiento.
+2. **Spread de coste 2x sin explicar.** Hasta que sepas por qué una tanda cuesta 55 € y otra 100 €, trabaja siempre con 0,33 € por pieza.
+3. **El negocio es de volumen.** Si la visita media por pieza cae por debajo de ~1.000, la máquina no gana dinero para nadie. Mide esa cifra semanalmente: es el indicador más importante que tienes.
 
 ---
 
-## 11. Fuentes
+## 7. Orden de salida
 
-- [Hybrid Pricing: The Complete Guide for SaaS and AI Companies (2026) — Flexprice](https://flexprice.io/blog/hybrid-pricing-guide)
-- [The 2026 State of B2B SaaS and AI Monetization Report — Growth Unhinged](https://www.growthunhinged.com/p/the-state-of-b2b-monetization-in-2026)
-- [AI SaaS Monetization in 2026: What Actually Works — Dodo Payments](https://dodopayments.com/blogs/ai-saas-monetization-2026)
-- [AI SaaS Pricing Models in 2026 — Fungies.io](https://fungies.io/ai-saas-pricing-models-2026/)
-- [Credit-Based Pricing for AI: How It Works, Where It Fails — Software Pricing Partners](https://softwarepricing.com/blog/credit-based-pricing-ai/)
-- [Credit Based Pricing vs Usage Based Pricing — Flexprice](https://flexprice.io/blog/credit-based-pricing-vs-usage-based-pricing)
-- [Magnific AI Pricing in 2026: Plans, Credits & API Costs — MyArchitectAI](https://www.myarchitectai.com/blog/magnific-ai-pricing)
-- [Magnific Pricing 2026 — Per-Image USD by Plan — Scopeful](https://www.scopeful.org/tools/magnific)
-- [Higgsfield pricing plans 2026 — Creatify](https://creatify.ai/blog/higgsfield-pricing-(2026)-plans-and-what-you-ll-actually-pay)
-- [Arcads Pricing 2026 — Fluxnote](https://fluxnote.io/guides/arcads-pricing-2026)
-- [Arcads vs Creatify vs Higgsfield vs Hyper (2026) — HyperFX](https://www.hyperfx.ai/blog/arcads-vs-creatify-vs-higgs-field-vs-hyper-2026)
-- [Precios Community Manager 2026: Guía de Tarifas — Vender por Internet](https://www.venderporinternet.org/precios-y-tarifas-de-un-community-manager/)
-- [Tarifas UGC España 2026 — The King of Content](https://thekingofcontent.agency/blog/tarifas-ugc-espana-precios-2026)
-- [¿Cuánto cuesta un vídeo UGC en España en 2026? — HICARI](https://hicari.io/cuanto-cuesta-video-ugc-estudio-espana-2026/)
-- [Modelos de Precios para SaaS en 2026 — SystemForge](https://systemforge.es/blog/modelos-precios-saas-como-definir-probar-2026/)
-- [Precios por asiento en SaaS: por qué están muriendo — El Ecosistema Startup](https://ecosistemastartup.com/precios-por-asiento-en-saas-por-que-estan-muriendo/)
-- [Freelance en España: guía completa 2026 — Asana](https://asana.com/es/resources/freelance)
-- [Customer Churn In The Era Of AI Products — Userpilot](https://userpilot.com/blog/customer-churn/)
+| Cuándo | Qué |
+|---|---|
+| **Mes 1** | Alumnos a 29 €/60 piezas, precio fundador. Cobras desde el día 1. Mides: piezas/alumno y **visitas medias por pieza**. |
+| **Mes 2** | Cierras el spread de coste. Ajustas cupos si hace falta. Recoges 3 casos con cifras de Symmetry. |
+| **Mes 3** | Abres al público: Solo 29 € y Pro 79 €. Captación **solo orgánica** desde tu contenido. |
+| **Mes 4-6** | Studio y Fábrica a petición, con llamada. Si Symmetry te paga a ti, abres el carril de reparto para los que pasen de 300 piezas/mes. |
+| **Mes 6+** | Con LTV real medido: anuncios y LATAM con precio ajustado. |
+
+**Métricas de control:** margen bruto ≥ 65% · churn mensual < 7% · visitas medias por pieza > 2.000 · % que compra recarga entre 15-25%.
